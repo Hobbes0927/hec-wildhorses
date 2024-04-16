@@ -8,9 +8,10 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 ### **Features**
 
 - Can spawn a rare horse when near one of the spawn locations
-- Notify the player when a horse spawns
+- Optionally notify the player when a horse spawns
 - Specify multiple spawn locations
-- Set multiple models for each location(s) and randomly pick one to spawn 
+- Set multiple models for each location(s) and randomly pick one to spawn
+- Create Discord webhook when a horse spawns
 
 
 ### **Dependencies**
