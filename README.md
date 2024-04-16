@@ -7,9 +7,9 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 
 ### **Features**
 
-Can spawn a rare horse when near one of the spawn locations
-Specify multiple spawn locations
-Set multiple models for each location(s) and randomly pick one to spawn 
+- Can spawn a rare horse when near one of the spawn locations
+- Specify multiple spawn locations
+- Set multiple models for each location(s) and randomly pick one to spawn 
 
 
 ### **Dependencies**
@@ -19,10 +19,10 @@ Set multiple models for each location(s) and randomly pick one to spawn
 
 ### **Installation**
 
-Download the latest master branch from https://github.com/Hobbes0927/hec-wildhorses
-Add hec-wildhorses folder to your resources folder
-Add ensure hec-wildhorses to your resources.cfg
-Restart server
+- Download the latest master branch from https://github.com/Hobbes0927/hec-wildhorses
+- Add hec-wildhorses folder to your resources folder
+- Add ensure hec-wildhorses to your resources.cfg
+- Restart server
 
 
 ### **GitHub**
