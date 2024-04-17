@@ -8,6 +8,7 @@ Config.DiscordWebHook = ""
 Config.DiscordBotName= "HEC Wildhorse"
 Config.DiscordAvatar = ""
 
+Config.Jobs = {}  -- Add jobs to job lock horse spawning Ex:  {'horsetrainer'}
 
 Config.Spawns = {
     {
