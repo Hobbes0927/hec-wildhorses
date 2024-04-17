@@ -5,6 +5,7 @@ TriggerEvent("getCore", function(core)
     VORPCore = core
 end)
 
+--Discord Notice
 RegisterServerEvent('hec_wildhorse:discord')
 AddEventHandler("hec_wildhorse:discord", function(breed)
     local _source = source
@@ -36,4 +37,21 @@ AddEventHandler("hec_wildhorse:discord", function(breed)
         }
     }
     PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({ username = botname,embeds = embeds}), { ['Content-Type'] = 'application/json' })
+end)
+
+-- Job Check
+VORPCore.Callback.Register('hec_wildhorse:callback:jobcheck', function(source,cb)
+    local _source = source
+	local Character = VORPCore.getUser(_source).getUsedCharacter
+	local sessionJob = Character.job
+    local check = false
+
+    for k, v in pairs(Config.Jobs) do
+        if sessionJob == v then
+            check = true
+            break
+        end
+    end
+
+	cb(check)	
 end)
