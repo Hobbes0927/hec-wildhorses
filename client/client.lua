@@ -123,6 +123,7 @@ end)
 -- Check for job change every 15 seconds (if applicable)
 Citizen.CreateThread(function()
     while true do
+        Citizen.Wait(1)
         if not IsEntityDead(PlayerPedId()) then
             jobCheck = JobCheck()
             Citizen.Wait(15000)
