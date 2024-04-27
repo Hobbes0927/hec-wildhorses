@@ -3,6 +3,8 @@ local VORPCore = {}
 local jobCheck = true
 local wildHorseRolled = false
 local Spawns = Config.Spawns
+local Delay = Config.RespawnDelay
+
 
 
 -- Load VORP Core
@@ -40,6 +42,21 @@ function JobCheck()
     else
         return true
     end
+end
+
+function SpawnChance()
+    --Convert spawn chance percentage to max value
+    local SpawnChanceMax = 20
+    if Config.SpawnChance == 1 then
+        SpawnChanceMax = 100
+    elseif Config.SpawnChance == 2 then
+        SpawnChanceMax = 50
+    elseif Config.SpawnChance == 3 then
+        SpawnChanceMax = 33
+    elseif Config.SpawnChance == 4 then
+        SpawnChanceMax = 25
+    end
+    return SpawnChanceMax
 end
 
 function SpawnHorse(x, y, z, h, model)
@@ -84,7 +101,8 @@ Citizen.CreateThread(function()
                     local playerCoords = GetEntityCoords(PlayerPedId())
                     local dist = #(playerCoords - c)
                     if dist < 200 then
-                        local rdm = math.random(1,20)
+                        local max = SpawnChance()
+                        local rdm = math.random(1,max)
                         -- 5% chance for horse to spawn
                         if rdm == 12 then
                             --Pick random horse model from config
@@ -110,8 +128,9 @@ Citizen.CreateThread(function()
                     end
                     if wildHorseRolled then break end  --Break loop because horse spawned
                 end
-                if wildHorseRolled then 
-                    Citizen.Wait(300000) --Wait 5 minutes to reset Horse Spawn
+                if wildHorseRolled then
+
+                    Citizen.Wait(Delay) --Wait time to reset Horse Spawn
                     wildHorseRolled = false --Reset Horse Spawn
                     break
                 end
