@@ -1,7 +1,7 @@
 Config = {}
 
 Config.NotificationOn = true
-Config.Notification = "A Wild Horse Spawned Nearby"
+Config.Notification = "A Wild Horse Appeared Nearby"
 
 Config.DiscordIntegration = false
 Config.DiscordWebHook = ""
@@ -9,6 +9,9 @@ Config.DiscordBotName= "HEC Wildhorse"
 Config.DiscordAvatar = ""
 
 Config.Jobs = {}  -- Add jobs to job lock horse spawning Ex:  {'horsetrainer'}
+
+Config.SpawnChance = 3 -- Valid entries (1 = 1%, 2 = 2%, 3 = 3%, 4 = 4%, 5 = 5%)
+Config.RespawnDelay = 900000 --In milliseconds (60000 = 1 minute)
 
 Config.Spawns = {
     {
