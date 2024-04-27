@@ -32,3 +32,7 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 
 ### **GitHub**
 https://github.com/Hobbes0927/hec-wildhorses
+
+### **Versions**
+
+1.0.0 - First Full Release
