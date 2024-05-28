@@ -25,7 +25,7 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 
 ### **Installation**
 
-- Download the latest master branch from https://github.com/Hobbes0927/hec-wildhorses
+- Download the latest release from [https://github.com/Hobbes0927/hec-wildhorses](https://github.com/Hobbes0927/hec-wildhorses/releases)
 - Add hec-wildhorses folder to your resources folder
 - Add ensure hec-wildhorses to your resources.cfg
 - Restart server
