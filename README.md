@@ -37,4 +37,5 @@ https://github.com/Hobbes0927/hec-wildhorses
 ### **Versions**
 
 1.0.0 - First Full Release
+
 1.1.0 - Added horse gender, more spawn chance options, and better job lock checking
