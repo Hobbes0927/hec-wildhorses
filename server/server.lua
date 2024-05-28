@@ -45,13 +45,13 @@ VORPCore.Callback.Register('hec_wildhorse:callback:jobcheck', function(source,cb
 	local Character = VORPCore.getUser(_source).getUsedCharacter
 	local sessionJob = Character.job
     local check = false
-
-    for k, v in pairs(Config.Jobs) do
-        if sessionJob == v then
-            check = true
-            break
+    if sessionJob ~= nil then
+        for k, v in pairs(Config.Jobs) do
+            if sessionJob == v then
+                check = true
+                break
+            end
         end
-    end
-
+    end   
 	cb(check)	
 end)
