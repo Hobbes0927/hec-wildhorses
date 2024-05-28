@@ -8,9 +8,10 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 ### **Features**
 
 - Can spawn a rare horse when near one of the spawn locations
+- Horses randomly spawn as male or female
 - Specify multiple spawn locations
 - Set multiple models for each location(s) and randomly pick one to spawn
-- Configure 1-5% chance of rare horse spawning
+- Configure 0.25%-5% chance of rare horse spawning
 - Configure respawn delay for the player
 - Optionally job lock horse spawns
 - Optionally notify the player when a horse spawns
@@ -36,3 +37,4 @@ https://github.com/Hobbes0927/hec-wildhorses
 ### **Versions**
 
 1.0.0 - First Full Release
+1.1.0 - Added horse gender, more spawn chance options, and better job lock checking
