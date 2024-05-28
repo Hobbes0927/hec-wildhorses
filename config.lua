@@ -10,7 +10,8 @@ Config.DiscordAvatar = ""
 
 Config.Jobs = {}  -- Add jobs to job lock horse spawning Ex:  {'horsetrainer'}
 
-Config.SpawnChance = 3 -- Valid entries (1 = 1%, 2 = 2%, 3 = 3%, 4 = 4%, 5 = 5%)
+Config.SpawnChance = 7 -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5 = 3%, 6 = 4%, 7 = 5%)
+
 Config.RespawnDelay = 900000 --In milliseconds (60000 = 1 minute)
 
 Config.Spawns = {
