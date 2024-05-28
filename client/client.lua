@@ -22,6 +22,10 @@ function SetRandomOutfitVar(ped, bool1)
     return Citizen.InvokeNative(0x283978A15512B2FE, ped, bool1)
 end
 
+function UpdatePedVariation(ped)
+    Citizen.InvokeNative(0xAAB86462966168CE, ped, true) -- UNKNOWN "Fixes outfit"- always paired with _UPDATE_PED_VARIATION
+    Citizen.InvokeNative(0xCC8CA3E88256E58F, ped, false, true, true, true, false) -- _UPDATE_PED_VARIATION
+end
 function DiscordNotification(breed)
     TriggerServerEvent("hec_wildhorse:discord", breed)
 end
@@ -48,12 +52,16 @@ function SpawnChance()
     --Convert spawn chance percentage to max value
     local SpawnChanceMax = 20
     if Config.SpawnChance == 1 then
-        SpawnChanceMax = 100
+        SpawnChanceMax = 400
     elseif Config.SpawnChance == 2 then
-        SpawnChanceMax = 50
+        SpawnChanceMax = 200
     elseif Config.SpawnChance == 3 then
-        SpawnChanceMax = 33
+        SpawnChanceMax = 100
     elseif Config.SpawnChance == 4 then
+        SpawnChanceMax = 50
+    elseif Config.SpawnChance == 5 then
+        SpawnChanceMax = 33
+    elseif Config.SpawnChance == 6 then
         SpawnChanceMax = 25
     end
     return SpawnChanceMax
@@ -70,14 +78,22 @@ function SpawnHorse(x, y, z, h, model)
     SetRandomOutfitVar(wildHorse, true)
     SetEntityAsMissionEntity(wildHorse, true, true)
     SetModelAsNoLongerNeeded(model)
-    
     while not PedReadyToRender(wildHorse) do 
         Citizen.Wait(1)
     end
 
-    Citizen.InvokeNative(0x704C908E9C405136, npc)
-    Citizen.InvokeNative(0xAAB86462966168CE, npc, 1) 
+    --Determine Horse Gender
+    local rng = math.random(10) --Randomly generate number
+    local gender = 0.0
+    if (rng % 2 == 0) then
+        gender = 1.0  --Even number change to female
+    end
 
+    Citizen.InvokeNative(0x5653AB26C82938CF, wildHorse, 0xA28B, gender)  --Assign the gender to the horse
+    UpdatePedVariation(wildHorse)  --Redraw the horse
+
+    Citizen.InvokeNative(0x704C908E9C405136, npc)
+    Citizen.InvokeNative(0xAAB86462966168CE, npc, 1)
     Citizen.InvokeNative(0x9F7794730795E019, wildHorse, 17, true) -- Set the horse to flee from danger
     Citizen.InvokeNative(0xAE6004120C18DF97, wildHorse, 0, true) -- -- SET_PED_LASSO_HOGTIE_FLAG 
     Citizen.InvokeNative(0xAEB97D84CDF3C00B, wildHorse, true) --_SET_ANIMAL_IS_WILD
@@ -103,7 +119,7 @@ Citizen.CreateThread(function()
                     if dist < 200 then
                         local max = SpawnChance()
                         local rdm = math.random(1,max)
-                        -- 5% chance for horse to spawn
+                        -- Up to 5% chance for horse to spawn
                         if rdm == 12 then
                             --Pick random horse model from config
                             local horserdm = math.random(1,#v.horses)
