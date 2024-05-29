@@ -4,6 +4,7 @@ local jobCheck = true
 local wildHorseRolled = false
 local Spawns = Config.Spawns
 local Delay = Config.RespawnDelay
+local Frequency = Config.RNGTimer
 
 
 
@@ -109,7 +110,7 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(5000)
+        Citizen.Wait(Frequency)
         if not IsEntityDead(PlayerPedId()) and jobCheck then
             for k,v in pairs(Spawns) do 
                 for l,c in pairs(v.locations) do        
