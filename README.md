@@ -40,3 +40,5 @@ https://github.com/Hobbes0927/hec-wildhorses
 1.0.0 - First Full Release
 
 1.1.0 - Added horse gender, more spawn chance options, and better job lock checking
+
+1.1.1 - Added configuration option for how often the random roll occurs to spawn a horse
