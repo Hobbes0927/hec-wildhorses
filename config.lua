@@ -13,6 +13,7 @@ Config.Jobs = {}  -- Add jobs to job lock horse spawning Ex:  {'horsetrainer'}
 Config.SpawnChance = 7 -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5 = 3%, 6 = 4%, 7 = 5%)
 
 Config.RespawnDelay = 900000 --In milliseconds (60000 = 1 minute)
+Config.RNGTimer = 5000 -- How often the RNG timer rolls for the player in milliseconds (5000 = 5 seconds)
 
 Config.Spawns = {
     {
