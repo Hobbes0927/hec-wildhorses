@@ -27,7 +27,7 @@ AddEventHandler("hec_wildhorse:discord", function(breed)
     local embeds = {
         {
             ["title"] = CharName,
-            ["description"] = "A rare " .. _breed .. " horse spawned for player",
+            ["description"] = "Rare " .. _breed .. " horse(s) spawned for player",
             ["type"]="rich",
             ["color"] = 11027200,
             ["footer"] =  {
