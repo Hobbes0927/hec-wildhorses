@@ -7,7 +7,7 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 
 ### **Features**
 
-- Can spawn 1-5 rare horse when near one of the spawn locations
+- Can spawn 1-5 rare horses when near one of the spawn locations
 - Configurable maximum number of spawned horses
 - Horses randomly spawn as male or female
 - Specify multiple spawn locations
