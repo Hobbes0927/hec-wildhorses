@@ -84,6 +84,7 @@ function SpawnHorse(x, y, z, h, model)
     end
 
     --Determine Horse Gender
+    math.randomseed(h)  --Reseed RNG
     local rng = math.random(10) --Randomly generate number
     local gender = 0.0
     if (rng % 2 == 0) then
@@ -101,12 +102,10 @@ function SpawnHorse(x, y, z, h, model)
 
     SetBlockingOfNonTemporaryEvents(wildHorse, false)  -- Set environment can affect the horse
 
-    TaskWanderStandard(wildHorse, 10.0, 10)  -- Horse behavior is to wander in the direction it's facing
+    TaskWanderStandard(wildHorse, 3.0, 5)  -- Horse behavior is to wander in the direction it's facing
 
     SetEntityVisible(wildHorse, true, 0)  -- Spawn horse
 end
-
-
 
 Citizen.CreateThread(function()
     while true do
@@ -121,15 +120,41 @@ Citizen.CreateThread(function()
                         local max = SpawnChance()
                         local rdm = math.random(1,max)
                         -- Up to 5% chance for horse to spawn
-                        if rdm == 12 then
-                            --Pick random horse model from config
-                            local horserdm = math.random(1,#v.horses)
-                            local horsemodel = v.horses[horserdm]
+                        if rdm == 12 then                    
+                            
+                            local x, y, z = table.unpack(c)  -- Unpack the coordinates table from the config
+                            local cnt = 1  -- Max number of horses to spawn variable.  Defaults to 1
 
-                            local heading = math.random(1,359)
-                            local x, y, z = table.unpack(c)
+                            --Randomize the number of horses spawned based on config
+                            if (Config.MaxHorses > 1 and Config.MaxHorses <= 5) then
+                                cnt = math.random(1, Config.MaxHorses)
+                            end
 
-                            SpawnHorse(x, y, z, heading, horsemodel)
+                            local offset = 0  -- Offset the spawn coordinates between horses variable
+                            local newx = 0  -- Offset x axis variable
+                            local newy = 0  -- Offset y axis variable
+                            local heading = 0  -- Ped heading (i.e, which way its facing) variable
+                            local horserdm = 0 -- Random number for the horse model to spawn variable
+                            local horsemodel = ""  --Horse model selected variable
+
+                            -- Spawn the horse(s)
+                            for i = 1, cnt, 1
+                            do
+                                math.randomseed(i*2) --reset the rng seed
+
+                                --Calculate axis offset
+                                repeat
+                                    offset = math.random(-10, 10)
+                                until offset ~= 0
+
+                                newx = x + offset  -- Offset x axis
+                                newy = y + offset  -- Offset y axis
+                                heading = math.random(1,359)
+                                horserdm = math.random(1,#v.horses)
+                                horsemodel = v.horses[horserdm]
+                                SpawnHorse(newx, newy, z, heading, horsemodel)
+                            end
+                            
                             wildHorseRolled = true
 
                             --Discord Notification
