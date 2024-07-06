@@ -5,6 +5,7 @@ local wildHorseRolled = false
 local Spawns = Config.Spawns
 local Delay = Config.RespawnDelay
 local Frequency = Config.RNGTimer
+local Radius = Config.Radius
 
 
 
@@ -116,7 +117,7 @@ Citizen.CreateThread(function()
                     --Check if player has entered one of the spawn zone
                     local playerCoords = GetEntityCoords(PlayerPedId())
                     local dist = #(playerCoords - c)
-                    if dist < 200 then
+                    if dist < Radius then
                         local max = SpawnChance()
                         local rdm = math.random(1,max)
                         -- Up to 5% chance for horse to spawn
