@@ -1,7 +1,7 @@
 Config = {}
 
 Config.NotificationOn = true
-Config.Notification = "Rare Wild Horse(s) Appeared Nearby"
+Config.Notification = "Rare Wild Horse(s) Are Nearby"
 
 Config.DiscordIntegration = false
 Config.DiscordWebHook = ""
@@ -14,6 +14,7 @@ Config.SpawnChance = 7 -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5
 Config.RespawnDelay = 900000 --In milliseconds (60000 = 1 minute)
 Config.RNGTimer = 5000 -- How often the RNG timer rolls for the player in milliseconds (5000 = 5 seconds)
 Config.MaxHorses = 3 -- The maximum number of horses that can spawn when rolled.  No greater than 5 horses
+Config.Radius = 200 -- Player must be within this radius to begin random rolling (200 = 200 meters)
 
 Config.Spawns = {
     {
