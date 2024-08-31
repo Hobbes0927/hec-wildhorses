@@ -10,15 +10,15 @@ Config.DiscordAvatar = ""
 
 Config.Jobs = {}  -- Add jobs to job lock horse spawning Ex:  {'horsetrainer'}
 
-Config.SpawnChance = 7 -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5 = 3%, 6 = 4%, 7 = 5%)
 Config.RespawnDelay = 900000 --In milliseconds (60000 = 1 minute)
 Config.RNGTimer = 5000 -- How often the RNG timer rolls for the player in milliseconds (5000 = 5 seconds)
-Config.MaxHorses = 3 -- The maximum number of horses that can spawn when rolled.  No greater than 5 horses
 Config.Radius = 200 -- Player must be within this radius to begin random rolling (200 = 200 meters)
 
 Config.Spawns = {
     {
         breed = "Arabian",
+	spawnChance = 7,  -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5 = 3%, 6 = 4%, 7 = 5%)
+        maxHorses = 5,  -- The maximum number of horses that can spawn when rolled.  No greater than 5 horses
         locations = {
             vector3(-2162.6, -2078.67, 70.34),
             vector3(-2653.41, -2137.45, 76.43),
@@ -36,6 +36,8 @@ Config.Spawns = {
     },
     {
         breed = "Mustang",
+	spawnChance = 5, 
+        maxHorses = 2,
         locations = {
             vector3(-5931.86, -3014.2, -1.99),
             vector3(-5126.08, -2744.38, -8.08),
@@ -53,6 +55,8 @@ Config.Spawns = {
     },
     {
         breed = "Turkoman",
+	spawnChance = 3, 
+        maxHorses = 1,
         locations = {
             vector3(921.51, 977.37, 130.61),
         },
