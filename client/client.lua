@@ -50,20 +50,20 @@ function JobCheck()
     end
 end
 
-function SpawnChance()
+function SpawnChance(chance)
     --Convert spawn chance percentage to max value
     local SpawnChanceMax = 20
-    if Config.SpawnChance == 1 then
+    if chance == 1 then
         SpawnChanceMax = 400
-    elseif Config.SpawnChance == 2 then
+    elseif chance == 2 then
         SpawnChanceMax = 200
-    elseif Config.SpawnChance == 3 then
+    elseif chance == 3 then
         SpawnChanceMax = 100
-    elseif Config.SpawnChance == 4 then
+    elseif chance == 4 then
         SpawnChanceMax = 50
-    elseif Config.SpawnChance == 5 then
+    elseif chance == 5 then
         SpawnChanceMax = 33
-    elseif Config.SpawnChance == 6 then
+    elseif chance == 6 then
         SpawnChanceMax = 25
     end
     return SpawnChanceMax
@@ -118,7 +118,7 @@ Citizen.CreateThread(function()
                     local playerCoords = GetEntityCoords(PlayerPedId())
                     local dist = #(playerCoords - c)
                     if dist < Radius then
-                        local max = SpawnChance()
+                        local max = SpawnChance(v.spawnChance)
                         local rdm = math.random(1,max)
                         -- Up to 5% chance for horse to spawn
                         if rdm == 12 then                    
@@ -127,8 +127,8 @@ Citizen.CreateThread(function()
                             local cnt = 1  -- Max number of horses to spawn variable.  Defaults to 1
 
                             --Randomize the number of horses spawned based on config
-                            if (Config.MaxHorses > 1 and Config.MaxHorses <= 5) then
-                                cnt = math.random(1, Config.MaxHorses)
+                            if (v.maxHorses > 1 and v.maxHorses <= 5) then
+                                cnt = math.random(1, v.maxHorses)
                             end
 
                             local offset = 0  -- Offset the spawn coordinates between horses variable
