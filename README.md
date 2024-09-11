@@ -19,6 +19,8 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 - Optionally notify the player when a horse spawns
 - Optionally create Discord webhook when a horse spawns
 
+***NOTE:  This script will not work with SireVLC Stables custom horses.  Only RDR2 native horse breeds/coats are available***
+
 
 ### **Dependencies**
 
@@ -45,3 +47,9 @@ https://github.com/Hobbes0927/hec-wildhorses
 1.1.1 - Added configuration option for how often the random roll occurs to spawn a horse
 
 1.2.0 - Added configuration option to spawn multiple horses simultaneously
+
+1.2.1 - Added configurable radius for spawn chance
+
+1.2.2 - Fixed coordinate definition in the config.lua
+
+1.2.3 - Spawn chance and max horses now configurable per breed
