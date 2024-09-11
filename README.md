@@ -19,6 +19,7 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 - Optionally notify the player when a horse spawns
 - Optionally create Discord webhook when a horse spawns
 
+
 ***NOTE:  This script will not work with SireVLC Stables custom horses.  Only RDR2 native horse breeds/coats are available***
 
 
