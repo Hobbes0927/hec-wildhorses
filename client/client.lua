@@ -141,8 +141,6 @@ Citizen.CreateThread(function()
                             -- Spawn the horse(s)
                             for i = 1, cnt, 1
                             do
-                                math.randomseed(i*2) --reset the rng seed
-
                                 --Calculate axis offset
                                 repeat
                                     offset = math.random(-10, 10)
