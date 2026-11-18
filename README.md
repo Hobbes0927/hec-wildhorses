@@ -15,6 +15,7 @@ REDM provides limited wild horse breeds to be captured and tamed across the map.
 - Configure 0.25%-5% chance of rare horse spawning
 - Configure how often the random roll occurs to spawn a horse
 - Configure respawn delay for the player
+- Optionally add custom horse/breed names for any model spawned (Can be seen through binoculars or interacting with the horse)
 - Optionally job lock horse spawns
 - Optionally notify the player when a horse spawns
 - Optionally create Discord webhook when a horse spawns
@@ -52,5 +53,7 @@ https://github.com/Hobbes0927/hec-wildhorses
 1.2.1 - Added configurable radius for spawn chance
 
 1.2.2 - Fixed coordinate definition in the config.lua
+
+1.3.0 - Added custom breed/names to spawned horses
 
 1.2.3 - Spawn chance and max horses now configurable per breed
