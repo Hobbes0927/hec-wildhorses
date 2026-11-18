@@ -70,4 +70,23 @@ Config.Spawns = {
 			`a_c_horse_gang_sadie`,
         }
     },
+	-- Example custom horse entries.  You can specify a breed name for add-on custom horses
+	{
+        breed = "Marwari",
+        spawnChance = 7,  -- Valid entries (1 = 0.25%, 2 = 0.50%, 3 = 1%, 4 = 2%, 5 = 3%, 6 = 4%, 7 = 5%)
+        maxHorses = 2,  -- The maximum number of horses that can spawn when rolled.  No greater than 5 horses
+        locations = {
+            vector3(-4618.62, -3634.37, 15.07),
+            vector3(-6075.27, -3573.48, -2.19),
+            vector3(-5633.14, -2644.0, 1.39),
+        },
+        horses = {
+            { model = GetHashKey('a_c_horse_native_01'), name = "Marwari" },
+			{ model = GetHashKey('a_c_horse_native_02'), name = "Marwari" },
+			{ model = GetHashKey('a_c_horse_native_03'), name = "Marwari" },
+			{ model = GetHashKey('a_c_horse_native_04'), name = "Marwari" },
+			{ model = GetHashKey('a_c_horse_native_05'), name = "Marwari" },
+			{ model = GetHashKey('a_c_horse_native_06'), name = "Marwari" },
+        }
+    },
 }
