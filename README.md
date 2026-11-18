@@ -58,4 +58,4 @@ https://github.com/Hobbes0927/hec-wildhorses
 
 1.2.4 - Removed broken math reseed when randomizing horse models.
 
-1.3.0 - Added custom breed/names to spawned horses
+1.3.0 - Added optional custom breed/names for spawned horses
