@@ -54,6 +54,6 @@ https://github.com/Hobbes0927/hec-wildhorses
 
 1.2.2 - Fixed coordinate definition in the config.lua
 
-1.3.0 - Added custom breed/names to spawned horses
-
 1.2.3 - Spawn chance and max horses now configurable per breed
+
+1.3.0 - Added custom breed/names to spawned horses
