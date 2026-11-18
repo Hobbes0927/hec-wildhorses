@@ -6,12 +6,44 @@ local Spawns = Config.Spawns
 local Delay = Config.RespawnDelay
 local Frequency = Config.RNGTimer
 local Radius = Config.Radius
-
-
+local horseNameStateKey = "hecWildHorseName"\
 
 -- Load VORP Core
 TriggerEvent("getCore", function(core)
     VORPCore = core
+end)
+
+local function SetWildHorsePromptName(horse, horseName)
+    -- Add custom horse prompt name/breed (if specified)
+    if horse == 0 or not DoesEntityExist(horse) then
+        return
+    end
+
+    if type(horseName) ~= "string" or horseName == "" then
+        return
+    end
+
+    SetPedPromptName(horse, horseName)
+end
+
+AddStateBagChangeHandler(horseNameStateKey, nil, function(bagName, _, horseName)
+    -- Looks for the horse's state bag entry for all players within rendering distance
+    if type(horseName) ~= "string" or horseName == "" then
+        return
+    end
+
+    Citizen.CreateThread(function()
+        for _ = 1, 50 do
+            local horse = GetEntityFromStateBagName(bagName)
+
+            if horse ~= 0 and DoesEntityExist(horse) then
+                SetWildHorsePromptName(horse, horseName)
+                return
+            end
+
+            Citizen.Wait(100)
+        end
+    end)
 end)
 
 function PedReadyToRender(ped)
@@ -69,7 +101,7 @@ function SpawnChance(chance)
     return SpawnChanceMax
 end
 
-function SpawnHorse(x, y, z, h, model)
+function SpawnHorse(x, y, z, h, model, horseName)
     --Create Horse
     RequestModel(model)
     while not HasModelLoaded(model) do
@@ -82,6 +114,11 @@ function SpawnHorse(x, y, z, h, model)
     SetModelAsNoLongerNeeded(model)
     while not PedReadyToRender(wildHorse) do 
         Citizen.Wait(1)
+    end
+
+    if type(horseName) == "string" and horseName ~= "" then
+        SetWildHorsePromptName(wildHorse, horseName)
+        Entity(wildHorse).state:set(horseNameStateKey, horseName, true)
     end
 
     --Determine Horse Gender
@@ -134,7 +171,7 @@ Citizen.CreateThread(function()
                             local offset = 0  -- Offset the spawn coordinates between horses variable
                             local newx = 0  -- Offset x axis variable
                             local newy = 0  -- Offset y axis variable
-                            local heading = 0  -- Ped heading (i.e, which way its facing) variable
+                            local heading = 0  -- Ped heading (i.e., which way it's facing) variable
                             local horserdm = 0 -- Random number for the horse model to spawn variable
                             local horsemodel = ""  --Horse model selected variable
 
@@ -150,8 +187,17 @@ Citizen.CreateThread(function()
                                 newy = y + offset  -- Offset y axis
                                 heading = math.random(1,359)
                                 horserdm = math.random(1,#v.horses)
-                                horsemodel = v.horses[horserdm]
-                                SpawnHorse(newx, newy, z, heading, horsemodel)
+                                local horseEntry = v.horses[horserdm]
+                                local horseName = nil
+
+                                if type(horseEntry) == "table" then
+                                    horsemodel = horseEntry.model
+                                    horseName = horseEntry.name
+                                else
+                                    horsemodel = horseEntry
+                                end
+
+                                SpawnHorse(newx, newy, z, heading, horsemodel, horseName)
                             end
                             
                             wildHorseRolled = true
@@ -179,7 +225,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
 -- Check for job change every 15 seconds (if applicable)
 Citizen.CreateThread(function()
     while true do
