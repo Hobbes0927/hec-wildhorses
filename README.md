@@ -56,4 +56,6 @@ https://github.com/Hobbes0927/hec-wildhorses
 
 1.2.3 - Spawn chance and max horses now configurable per breed
 
+1.2.4 - Removed broken math reseed when randomizing horse models.
+
 1.3.0 - Added custom breed/names to spawned horses
